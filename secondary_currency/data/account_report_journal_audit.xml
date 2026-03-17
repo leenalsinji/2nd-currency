@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+<record id="journal_report_secondary_currency" model="account.report">
+    <field name="name">Journal Report - Secondary Currency</field>
+    <field name="custom_handler_model_id" ref="model_account_journal_report_custom_handler"/>
+    
+    <field name="column_ids">
+        <record id="journal_report_debit2" model="account.report.column">
+            <field name="name">Debit 2</field>
+            <field name="expression_label">debit2</field>
+        </record>
+        <record id="journal_report_credit2" model="account.report.column">
+            <field name="name">Credit 2</field>
+            <field name="expression_label">credit2</field>
+        </record>
+        <record id="journal_report_balance2" model="account.report.column">
+            <field name="name">Balance 2</field>
+            <field name="expression_label">balance2</field>
+        </record>
+    </field>
+
+    <field name="line_ids">
+        <record id="journal_report_line_sec" model="account.report.line">
+            <field name="name">Journal Details</field>
+            <field name="groupby">journal_id, account_id</field>
+            <field name="expression_ids">
+                <record id="expr_debit2" model="account.report.expression">
+                    <field name="label">debit2</field>
+                    <field name="engine">custom</field>
+                    <field name="formula">_report_custom_engine_journal_report</field>
+                    <field name="subformula">debit2</field>
+
+                </record>
+                <record id="expr_credit2" model="account.report.expression">
+                    <field name="label">credit2</field>
+                    <field name="engine">custom</field>
+                    <field name="formula">_report_custom_engine_journal_report</field>
+                    <field name="subformula">credit2</field>
+                </record>
+                <record id="expr_balance2" model="account.report.expression">
+                    <field name="label">balance2</field>
+                    <field name="engine">custom</field>
+                    <field name="formula">_report_custom_engine_journal_report</field>
+                    <field name="subformula">balance2</field>
+                </record>
+            </field>
+        </record>
+    </field>
+</record>
+</data>
+</odoo>
