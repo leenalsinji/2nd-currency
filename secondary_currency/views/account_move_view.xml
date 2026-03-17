@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_move_form_inherit_currency2" model="ir.ui.view">
+        <field name="name">account.move.form.inherit.currency2</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//field[@name='line_ids']//list//field[@name='currency_id']" position="after">
+                <field name="company_currency2_id" string="Secondary Currency" optional="hide" readonly="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='line_ids']//list//field[@name='debit']" position="after">
+                <field name="debit2" string="Secondary Debit" optional="show" sum="Total Secondary Debit" />
+            </xpath>
+
+            <xpath expr="//field[@name='line_ids']//list//field[@name='credit']" position="after">
+                <field name="credit2" string="Secondary Credit" optional="show" sum="Total Secondary Credit"/>
+            </xpath>
+            
+            <xpath expr="//field[@name='line_ids']//list//field[@name='amount_currency']" position="after">
+                <field name="amount2" string=" Amount in Secondary Currency" optional="hide"/>
+            </xpath>            
+        </field>
+    </record>
+    
+    <record id="view_move_line_tree_inherit_secondary" model="ir.ui.view">
+        <field name="name">account.move.line.tree.inherit.secondary</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account.view_move_line_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='debit']" position="after">
+                <field name="debit2" string="Secondary Debit" sum="Total Sec. Debit" optional="show"
+                />
+            </xpath>
+            
+            <xpath expr="//field[@name='credit']" position="after">
+                <field name="credit2" string="Secondary Credit" sum="Total Sec. Credit" optional="show"/>
+            </xpath>
+
+            <xpath expr="//field[@name='balance']" position="after">
+                <field name="balance2" string="Secondary Balance" sum="Total Sec. Balance" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    
+</odoo>

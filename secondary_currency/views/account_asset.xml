@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_asset_form_inherit_sec" model="ir.ui.view">
+        <field name="name">account.asset.form.inherit.sec</field>
+        <field name="model">account.asset</field>
+        <field name="inherit_id" ref="account_asset.view_account_asset_form" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//form" position="inside">
+                <field name="company_currency2_id" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='original_value']" position="after">
+                <field name="original_value2" 
+                       string="Sec. Original Value" 
+                       widget="monetary" 
+                       options="{'currency_field': 'company_currency2_id'}" 
+                       />
+            </xpath>
+
+            <xpath expr="//field[@name='salvage_value']" position="after">
+                <field name="salvage_value2" 
+                       string="Sec. Not Depreciable Value" 
+                       widget="monetary" 
+                       options="{'currency_field': 'company_currency2_id'}" 
+                        />
+            </xpath>
+
+            <xpath expr="//field[@name='salvage_value2']" position="after">
+                <field name="book_value2" 
+                       string="Sec. Book Value" 
+                       widget="monetary" 
+                       options="{'currency_field': 'company_currency2_id'}" 
+                       />
+            </xpath>
+
+            <xpath expr="//field[@name='already_depreciated_amount_import']" position="after">
+                <field name="depreciated_amount2" 
+                       string="Sec. Depreciated Amount" 
+                       widget="monetary" 
+                       options="{'currency_field': 'company_currency2_id'}" 
+                        />
+            </xpath>
+            
+        </field>
+    </record>
+
+    
+</odoo>
